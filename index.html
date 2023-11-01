@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2(10</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <link rel="stylesheet" href="/resources/styles/style.css">
+    <link rel="shortcut icon" href="/resources/assets/image/me64.png" type="image/x-icon">
+</head>
+<body>
+    <div hx-get="/elements/background.html" hx-swap="outerHTML" hx-trigger="load"><script src="/resources/scripts/pixels.js"></script><script src="/resources/scripts/background.js"></script></div>
+
+    <div hx-get="/elements/sidebar.html" hx-swap="outerHTML" hx-trigger="load"><script src="/resources/scripts/sidebar.js"></script></div>    
+
+    <div hx-get="/elements/watermark.html" hx-swap="outerHTML" hx-trigger="load"></div>
+
+    <div hx-get="/elements/app.html" hx-swap="outerHTML" hx-trigger="load"></div>
+</body>
+</html>
