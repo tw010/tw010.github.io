@@ -29,7 +29,7 @@ function toggle() {
         buttons[an].style.transform = "translateX(-300%)";
         an--;
       }else{
-        bar.style.height="4.5em"
+        bar.style.height="5.2em"
         bar.style.borderRadius="0% 0% 2rem 0%"
         window.clearInterval(id);
       }

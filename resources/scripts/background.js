@@ -1,8 +1,10 @@
+const mobile = window.innerWidth < window.innerHeight;
+
 const maxage = 1024
-const maxamount = 256
+const maxamount = mobile ? 0 :  256
 const nodedistance = 128
 const golSize = 10
-const ftime = 32
+const ftime = mobile ? 128 : 32
 
 let nodes = []
 let time = 0
@@ -23,7 +25,7 @@ class CNode{
         this.y=y
         this.velx=velx
         this.vely=vely
-        this.size = 1.5
+        this.size = 0.5+Math.random()*2
         this.color = `rgba(${randCol()}, 0.5)`
         this.age = 0
     }
@@ -56,7 +58,7 @@ function drawbg(){
     while(offset>0){
         offset-=Math.random()*100
         col=offset/400*30
-        ctx.fillStyle = `rgb(${col}, ${col},${col})`
+        ctx.fillStyle = `rgb(${col}, ${col}, ${col})`
         ctx.fillRect(canvas.width/2-offset,canvas.height/2-offset,offset*2,offset*2)
     }
 }
@@ -160,10 +162,10 @@ function tickbg(timestamp){
             continue
         }
 
-        //ctx.fillStyle = nodes[n].color
-        //ctx.beginPath();
-        //ctx.arc(nodes[n].x, nodes[n].y, nodes[n].size, 0, 2 * Math.PI);
-        //ctx.fill();
+        ctx.fillStyle = nodes[n].color
+        ctx.beginPath();
+        ctx.arc(nodes[n].x, nodes[n].y, nodes[n].size*2, 0, 2 * Math.PI);
+        ctx.fill();
     }
     
 
@@ -175,8 +177,8 @@ function tickbg(timestamp){
             let d = Math.abs(distance(nodes[n1].x,nodes[n1].y,nodes[n].x,nodes[n].y))
             if(d<=nodedistance){
                 ctx.strokeStyle = nodes[n1].color
+                ctx.lineWidth = (nodes[n1].size+nodes[n].size)/2
                 ctx.beginPath();
-                ctx.lineWidth = nodes[n1].size;
                 ctx.moveTo(nodes[n1].x,nodes[n1].y)
                 ctx.lineTo((nodes[n1].x+nodes[n].x)/2,(nodes[n1].y+nodes[n].y)/2)
                 ctx.stroke();

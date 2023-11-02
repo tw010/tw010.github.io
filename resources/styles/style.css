@@ -14,10 +14,13 @@
     padding: 0;
     font-family: jbmono, system-ui;
     color: var(--fg-col);
-    outline: invert;
+    outline: none;
+    box-sizing: border-box;
 }
 
-
+/*:focus{
+   outline: var(--acc-col) medium dashed;
+}*/
 
 body{
     display: flex;
