@@ -126,11 +126,12 @@ function tickbg(timestamp){
         window.requestAnimationFrame(tickbg)
         return
     }
+    
     tick++
     time+=ftime
 
-    /*if(time+ftime < timestamp)
-        time = timestamp*/
+    if(time+ftime*15 < timestamp)
+        time = timestamp
 
 
     drawbg()
@@ -159,10 +160,10 @@ function tickbg(timestamp){
             continue
         }
 
-        ctx.fillStyle = nodes[n].color
-        ctx.beginPath();
-        ctx.arc(nodes[n].x, nodes[n].y, nodes[n].size, 0, 2 * Math.PI);
-        ctx.fill();
+        //ctx.fillStyle = nodes[n].color
+        //ctx.beginPath();
+        //ctx.arc(nodes[n].x, nodes[n].y, nodes[n].size, 0, 2 * Math.PI);
+        //ctx.fill();
     }
     
 

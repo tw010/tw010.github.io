@@ -30,7 +30,7 @@ function toggle() {
         an--;
       }else{
         bar.style.height="4.5em"
-        bar.style.borderRadius="0% 0% 50% 0%"
+        bar.style.borderRadius="0% 0% 2rem 0%"
         window.clearInterval(id);
       }
     }, trans);
