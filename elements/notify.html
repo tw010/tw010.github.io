@@ -1,9 +1,19 @@
 <style>
-    .notify { top: 0; right: 0; position: fixed; background-color: var(--bg-col); }
-    .notify > * {
-
+    .notify {
+        top: 0;
+        right: 0;
+        position: fixed;
+        background-color: transparent;
+    }
+    .notify > div {
+        margin: 0.1em;
+    }
+    .notify > div:nth-child(odd) {
+        background-color: var(--bg-col);
+    }
+    .notify > div:nth-child(even) {
+        background-color: #101010;
     }
 </style>
-<div class="notify">
-    
+<div class="notify" id="notify">
 </div>

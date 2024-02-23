@@ -1,12 +1,15 @@
 const size = 10
 
+const m = 4
+
 let x = 0, y = 0
 let mousedown = false
 let colormode = 0
 let container
 
 function nextColorMode(){
-    colormode = (colormode+1)%4
+    notify("#cursor\ntrail "+(colormode==m-1 ? "removed" : "#"+(colormode+1)))
+    colormode = (colormode+1)%m
 }
 
 document.addEventListener("mousedown", (e)=>{
@@ -18,7 +21,7 @@ document.addEventListener("mouseup", (e)=>{
 })
 
 document.addEventListener("mousemove", (e)=>{
-    x = e.x-(e.x%size)
+    x = e.x - (e.x%size)
     y = e.y - (e.y%size)
     
     pixel3x3(x,y)
