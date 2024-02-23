@@ -8,7 +8,7 @@ let colormode = 0
 let container
 
 function nextColorMode(){
-    notify("#cursor\ntrail "+(colormode==m-1 ? "removed" : "#"+(colormode+1)))
+    notify("#cursor\ntrail "+(colormode==m-1 ? "removed" : "#"+(colormode+1)), 3200)
     colormode = (colormode+1)%m
 }
 

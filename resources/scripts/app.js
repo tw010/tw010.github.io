@@ -7,3 +7,7 @@ function loadPage(s) {
     document.getElementById("page").appendChild(el);
     htmx.process(el)
 }
+
+function setTitle(s){
+    document.getElementById("title").innerText=s
+}

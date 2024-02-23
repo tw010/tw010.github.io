@@ -1,8 +1,7 @@
-function notify(str){
+function notify(str, timeout){
     const p = document.getElementById("notify")
     const el = document.createElement("div")
     const s = str.split("\n")
-    el.innerHTML=""
     for(let i = 0; i<s.length; i++){
         let e = "p"
         if(s[i]==""){
@@ -18,6 +17,7 @@ function notify(str){
         ne.innerText+=s[i]
         el.appendChild(ne)
     }
+    el.style.animationDuration=timeout+"ms"
     p.appendChild(el)
-    setTimeout(function(){p.removeChild(el)}, 2500)
+    setTimeout(function(){p.removeChild(el)}, timeout)
 }

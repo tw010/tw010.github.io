@@ -13,6 +13,8 @@ function toggle() {
   if (v) {
     bar.style.height="100%";
     bar.style.borderRadius="0%";
+    document.getElementById("app").style.position="relative"
+    document.getElementById("app").style.width="100%"
     an = 0;
     id = window.setInterval(function () {
       if(an<buttons.length){
@@ -31,6 +33,8 @@ function toggle() {
       }else{
         bar.style.height="6em"
         bar.style.borderRadius="0% 0% 2rem 0%"
+        document.getElementById("app").style.position="fixed"
+        document.getElementById("app").style.width="90%"
         window.clearInterval(id);
       }
     }, trans);
