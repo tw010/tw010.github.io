@@ -1,61 +1,50 @@
 <style>
-    .sidebar > button * {
-        text-align: left;
-        color: var(--acc-col);
-        margin: 0;
-    }
-
     .sidebar{
+        --offset: 0.5em;
+        padding: var(--offset);
         height: 100%;
-        width: 10%;
-        padding: .5rem;
         background-color: var(--bg-col);
-        border-radius: 0 0 2rem 0;
-        transition: all 150ms;
-        font-size: 50%;
+        transition: 150ms;
     }
 
     .sidebar button{
-        padding: 1em;
-        transition: 0.4s;
-        opacity: 1;
+        transition: 0.5s;
         background-color: var(--bg-col);
-        color: var(--acc-col);
         border-radius: 1em;
         display: flex;
-        margin: 0.5em;
+        margin: var(--offset);
         border: none;
+        padding: .5rem;
         place-items: center;
         justify-content: center;
-        font-family: jbmono;
+        color: var(--acc-col);
+        box-sizing: content-box;
+
+        height: 4em;
+        min-width: 4em;
     }
 
+    .sidebar button * {
+        transition: 0.5s;
+        color: var(--acc-col);
+    }
 
     .sidebar img {
         display: inline;
-        height: 100%;
         border-radius: 15%;
-        margin-right: 0.5em;
+        max-height: 100%;
     }
 
     .sidebar button:hover{
         transition: 0.5s;
-        box-shadow: -0.4em -0.4em var(--acc-col);
-        transform: translate(0.4em, 0.4em);
+        box-shadow: calc(0em - var(--offset)) calc(0em - var(--offset)) var(--acc-col);
+        transform: translate(var(--offset), var(--offset));
     }
 
     .sidebar button:active{
         transition: none;
-        box-shadow: -0.4em -0.4em var(--fg-col);
-        transform: translate(0.4em, 0.4em);
-    }
-
-    .sidebar button:active > img {
-        border-radius: 50%;
-    }
-
-    .sidebar button > *{
-        transition: 0.5s;
+        box-shadow: calc(0em - var(--offset)) calc(0em - var(--offset)) var(--fg-col);
+        transform: translate(var(--offset), var(--offset));
     }
 
     .svg-icon path, .sidebar button > svg{
@@ -63,18 +52,9 @@
         fill: var(--acc-col);
     }
 
-    .sidebar > button{
-        color: var(--acc-col);
-    }
-
     .sidebar > button:active *{
-        transition: 0s;
-        color: var(--fg-col);
-    }
-
-    .sidebar > button:active .svg-icon path,
-    .sidebar > button:active > svg{
         transition: none;
+        color: var(--fg-col);
         fill: var(--fg-col);
     }
 </style>

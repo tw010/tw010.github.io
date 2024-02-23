@@ -9,24 +9,24 @@
     <link rel="shortcut icon" href="/resources/assets/image/me64.png" type="image/x-icon">
 </head>
 <body>
+    <div hx-get="/elements/watermark.html" hx-swap="outerHTML" hx-trigger="load"></div>
     <div hx-get="/elements/background.html" hx-swap="outerHTML" hx-trigger="load">
         <script src="/resources/scripts/font.js"></script>
         <script src="/resources/scripts/pixels.js"></script>
         <script src="/resources/scripts/background.js"></script>
     </div>
 
-    <!-- <div hx-get="/elements/sidebar.html" hx-swap="outerHTML" hx-trigger="load">
-        <script src="/resources/scripts/sidebar.js"></script>
-    </div> -->
-
-    <div hx-get="/elements/watermark.html" hx-swap="outerHTML" hx-trigger="load"></div>
+    <main style="width: 100%; display: flex;">
+        <div hx-get="/elements/sidebar.html" hx-swap="outerHTML" hx-trigger="load">
+            <script src="/resources/scripts/sidebar.js"></script>
+        </div>
+        <div hx-get="/elements/app.html" hx-swap="outerHTML" hx-trigger="load">
+            <script src="/resources/scripts/app.js"></script>
+        </div>
+    </main>
 
     <div hx-get="/elements/notify.html" hx-swap="outerHTML" hx-trigger="load">
         <script src="/resources/scripts/notify.js"></script>
-    </div>
-
-    <div hx-get="/elements/app.html" hx-swap="outerHTML" hx-trigger="load">
-        <script src="/resources/scripts/app.js"></script>
     </div>
 </body>
 </html>

@@ -26,10 +26,10 @@ function toggle() {
     an = buttons.length - 1;
     id = window.setInterval(function () {
       if(an>0){
-        buttons[an].style.transform = "translateX(-300%)";
+        buttons[an].style.transform= "translateX(-200%)";
         an--;
       }else{
-        bar.style.height="5.2em"
+        bar.style.height="6em"
         bar.style.borderRadius="0% 0% 2rem 0%"
         window.clearInterval(id);
       }
