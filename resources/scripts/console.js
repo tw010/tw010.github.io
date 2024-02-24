@@ -28,17 +28,29 @@ fetch('/resources/assets/fortunes')
     fortunes = ["fortunes failed to load :("]
 });
 
+class Span {
+    text;
+    onclick;
+    constructor(text, onclick) {
+        this.text = text
+        this.onclick = onclick
+    }
+}
+
 const cmds = [
+    new Cmd(["lp"], "load page", (args) => {
+        loadPage(args.join(" "))
+    }),
     new Cmd(["notify"], "test notifications <content.., timeout (ms)>", (args) => {
         notify(args.slice(0,-1).join(" ").replaceAll("\\n","\n"),args[args.length-1])
     }),
-    new Cmd(["fortune"], "print a random, hopefully interesting, adage", (args) => {
+    new Cmd(["fortune"], "print a random, hopefully interesting, adage", () => {
         out(fortunes[Math.floor(Math.random()*fortunes.length)])
     }),
     new Cmd(["echo","print","say"], "display a line of text", (args) => {
         out(args.join(" "))
     }),
-    new Cmd(["clear"], "clear the console", (args) => {
+    new Cmd(["clear"], "clear the console", () => {
         const children = document.getElementById("console").children;
 
         for (let i = children.length - 1; i >= 0; i--) {
@@ -47,14 +59,14 @@ const cmds = [
                 child.remove()
         }
     }),
-    new Cmd(["help","?"], "general information", (args) => {
-        out("console")
-        out("underlined text is clickable")
-        out("use up and down arrows to traverse history")
-        out("")
+    new Cmd(["help","?"], "general information", () => {
+        out(new Span("console"))
+        out("underlined text is ",new Span("clickable",()=>{notify("#congratulations\nyou just clicked the clickable text", 1500)}),".")
+        out("use up and down arrows to traverse history.")
+        nl()
         out("command list:")
         for(let i in cmds) {
-            out(" "+cmds[i].names+": "+cmds[i].desc)
+            out(" ",new Span(cmds[i].names,()=>{setinput(cmds[i].names[0])}),": "+cmds[i].desc)
         }
     })
 ]
@@ -99,10 +111,28 @@ function process(cmd){
     out("unknown command: \""+args[0]+"\"")
 }
 
-function out(s){
+function out(...s){
+    console.log(s)
     let o = document.createElement("p")
-    o.innerText=s
+    for(let i in s){
+        if(s[i] instanceof Span){
+            console.log(s[i].text)
+            let sp = document.createElement("span")
+            sp.innerText = s[i].text
+            if(s[i].onclick!=undefined){
+                sp.toggleAttribute("onclick")
+                sp.onclick = s[i].onclick
+            }
+            o.appendChild(sp)
+            continue
+        }
+        o.append(s[i])
+    }
     enter(o)
+    nl()
+}
+
+function nl(){
     enter(document.createElement("br"))
 }
 
@@ -113,5 +143,7 @@ function enter(el){
 }
 
 function setinput(s){
-    document.getElementById("infield").value=s
+    const input = document.getElementById("infield")
+    input.value=s
+    input.selectionStart = input.selectionEnd = input.value.length
 }

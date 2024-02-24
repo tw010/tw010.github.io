@@ -1,7 +1,7 @@
 const mobile = window.innerWidth < window.innerHeight;
 
 const maxage = 1024
-const maxamount = mobile ? 0 :  256
+const maxamount = mobile ? 0 : 256
 const nodedistance = 128
 const golSize = 10
 const ftime = mobile ? 128 : 32
@@ -151,7 +151,7 @@ function tickbg(timestamp){
     }
     
     if(nodes.length<maxamount)
-        nodes.push(new CNode(Math.random()*(canvas.width+nodedistance*2)-nodedistance,Math.random()*(canvas.height+nodedistance*2)-nodedistance,Math.random()*10-5,Math.random()*10-5))
+        nodes.push(new CNode(canvas.width/2,canvas.height/2,Math.random()*10-5,Math.random()*10-5))
 
     for(n in nodes){
         nodes[n].tick(canvas.width, canvas.height)
