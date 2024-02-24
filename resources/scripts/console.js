@@ -38,14 +38,11 @@ class Span {
 }
 
 const cmds = [
-    new Cmd(["lp"], "load page", (args) => {
-        loadPage(args.join(" "))
+    new Cmd(["fortune"], "print a random, hopefully interesting, adage", () => {
+        out(fortunes[Math.floor(Math.random()*fortunes.length)])
     }),
     new Cmd(["notify"], "test notifications <content.., timeout (ms)>", (args) => {
         notify(args.slice(0,-1).join(" ").replaceAll("\\n","\n"),args[args.length-1])
-    }),
-    new Cmd(["fortune"], "print a random, hopefully interesting, adage", () => {
-        out(fortunes[Math.floor(Math.random()*fortunes.length)])
     }),
     new Cmd(["echo","print","say"], "display a line of text", (args) => {
         out(args.join(" "))
@@ -94,9 +91,9 @@ function submit(){
 }
 
 function process(cmd){
-    cmd = cmd.trim()
-    if(cmd=="") return
+    if(cmd.trim()=="") return
     history.push(cmd)
+    cmd = cmd.trim()
     histindex=history.length
     const args = cmd.split(" ")
     for(let i in cmds){
