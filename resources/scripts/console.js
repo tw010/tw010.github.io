@@ -109,11 +109,9 @@ function process(cmd){
 }
 
 function out(...s){
-    console.log(s)
     let o = document.createElement("p")
     for(let i in s){
         if(s[i] instanceof Span){
-            console.log(s[i].text)
             let sp = document.createElement("span")
             sp.innerText = s[i].text
             if(s[i].onclick!=undefined){
@@ -143,4 +141,10 @@ function setinput(s){
     const input = document.getElementById("infield")
     input.value=s
     input.selectionStart = input.selectionEnd = input.value.length
+}
+
+function tab(){
+    const input = document.getElementById("infield")
+    const s = input.value
+    
 }

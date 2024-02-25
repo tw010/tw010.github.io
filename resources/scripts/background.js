@@ -1,6 +1,5 @@
 const mobile = window.innerWidth < window.innerHeight;
 
-const maxage = 1024
 const maxamount = mobile ? 0 : 256
 const nodedistance = 128
 const golSize = 10
@@ -18,7 +17,7 @@ function distance(x1, y1, x2, y2){
 }
 
 class CNode{
-    x; y; velx; vely; size; color; age;
+    x; y; velx; vely; size; color;
 
     constructor(x,y,velx,vely){
         this.x=x
@@ -27,7 +26,6 @@ class CNode{
         this.vely=vely
         this.size = 0.5+Math.random()*2
         this.color = `rgba(${randCol()}, 0.5)`
-        this.age = 0
     }
 
     tick(w, h){
@@ -35,11 +33,6 @@ class CNode{
         this.x = (this.x+w+nodedistance*3)%(w+nodedistance*2)-nodedistance
         this.y += this.vely
         this.y = (this.y+h+nodedistance*3)%(h+nodedistance*2)-nodedistance
-        this.age++
-    }
-
-    shouldRemove(){
-        return this.age>=maxage
     }
 }
 
@@ -155,19 +148,11 @@ function tickbg(timestamp){
 
     for(n in nodes){
         nodes[n].tick(canvas.width, canvas.height)
-
-        if(nodes[n].shouldRemove(canvas.width, canvas.height)){
-            nodes.splice(n, 1)
-            n--;
-            continue
-        }
-
         ctx.fillStyle = nodes[n].color
         ctx.beginPath();
         ctx.arc(nodes[n].x, nodes[n].y, nodes[n].size*2, 0, 2 * Math.PI);
         ctx.fill();
     }
-    
 
     for(n in nodes){
         for(n1 in nodes){

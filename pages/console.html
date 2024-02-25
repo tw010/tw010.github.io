@@ -50,5 +50,5 @@
 </style>
 <div id="console" onclick="document.getElementById('infield').focus()">
     <p>type <span onclick="setinput('help'); submit()">help</span> or <span onclick="setinput('?'); submit()">?</span> for help</p><br>
-    <div id="input"><p style="word-break: keep-all;">tw010<span>@</span>github.io<span>&nbsp;~$</span>&gt;</p><input id="infield" autofocus type="text" onkeydown="switch(event.keyCode){ case 13: event.preventDefault(); submit(); break; case 38: event.preventDefault(); fromhist(-1); break; case 40: event.preventDefault(); fromhist(1); break;}"></div>
+    <div id="input"><p style="word-break: keep-all;">tw010<span>@</span>github.io<span>&nbsp;~$</span>&gt;</p><input id="infield" autofocus type="text" onkeydown="switch(event.keyCode){ case 13: event.preventDefault(); submit(); break; case 38: event.preventDefault(); fromhist(-1); break; case 40: event.preventDefault(); fromhist(1); break; case 9: event.preventDefault(); tab(); break;}"></div>
 </div>

@@ -1,16 +1,3 @@
-function loadPage(s) {
-    if(!app) toggleApp()
-    setTitle(s)
-    const el = document.createElement("div")
-    el.setAttribute("hx-get", "/pages/"+s+".html")
-    el.setAttribute("hx-swap", "outerHTML")
-    el.setAttribute("hx-trigger", "load")
-    document.getElementById("page").innerHTML=""
-    document.getElementById("page").appendChild(el);
-
-    htmx.process(el)
-}
-
 function loadPage(s, afterReq) {
     if(!app) toggleApp()
     setTitle(s)
@@ -21,7 +8,7 @@ function loadPage(s, afterReq) {
     document.getElementById("page").innerHTML=""
     document.getElementById("page").appendChild(el);
 
-    el.addEventListener('htmx:afterRequest', afterReq);
+    el.addEventListener('htmx:afterRequest', function(){afterReq()});
 
     htmx.process(el)
 }

@@ -11,10 +11,13 @@ function toggle() {
 
   window.clearInterval(id);
   if (v) {
+    bar.style.opacity="1"
     bar.style.height="100%";
-    bar.style.borderRadius="0%";
+    bar.style.visibility="visible"
+    bar.style.overflow="scroll"
+    document.getElementById("app").style.marginTop=""
     document.getElementById("app").style.position="relative"
-    document.getElementById("app").style.width="100%"
+    document.getElementById("app").style.left="0"
     an = 0;
     id = window.setInterval(function () {
       if(an<buttons.length){
@@ -31,10 +34,13 @@ function toggle() {
         buttons[an].style.transform= "translateX(-200%)";
         an--;
       }else{
-        bar.style.height="6em"
-        bar.style.borderRadius="0% 0% 2rem 0%"
+        bar.style.opacity="0.75"
+        bar.style.height="0"
+        bar.style.visibility="hidden"
+        bar.style.overflow="visible"
+        document.getElementById("app").style.left="-3rem"
+        document.getElementById("app").style.marginTop="6em"
         document.getElementById("app").style.position="fixed"
-        document.getElementById("app").style.width="90%"
         window.clearInterval(id);
       }
     }, trans);
