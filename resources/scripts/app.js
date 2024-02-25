@@ -1,5 +1,6 @@
 function loadPage(s, afterReq) {
     if(!app) toggleApp()
+    if(mobile&&v) toggle()
     setTitle(s)
     const el = document.createElement("div")
     el.setAttribute("hx-get", "/pages/"+s+".html")
