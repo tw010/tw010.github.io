@@ -18,6 +18,6 @@ function notify(str, timeout){
         el.appendChild(ne)
     }
     el.style.animationDuration=timeout+"ms"
+    el.onanimationend = ()=>{p.removeChild(el)}
     p.appendChild(el)
-    setTimeout(function(){p.removeChild(el)}, timeout)
 }

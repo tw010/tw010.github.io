@@ -1,4 +1,4 @@
-const mobile = window.innerWidth < window.innerHeight;
+const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 const maxamount = mobile ? 0 : 256
 const nodedistance = 128

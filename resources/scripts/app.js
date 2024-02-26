@@ -1,15 +1,33 @@
-function loadPage(s, afterReq) {
+const params = new URLSearchParams(document.location.search);
+const pages = {
+    "console": null,
+    "about": null,
+    "github": createRepoList,
+}
+
+function loadPage(s) {
+    if(!(s in pages)) {
+        loadPage("about")
+        return
+    }
+
     if(!app) toggleApp()
     if(mobile&&v) toggle()
     setTitle(s)
+
     const el = document.createElement("div")
     el.setAttribute("hx-get", "/pages/"+s+".html")
     el.setAttribute("hx-swap", "outerHTML")
     el.setAttribute("hx-trigger", "load")
+
     document.getElementById("page").innerHTML=""
     document.getElementById("page").appendChild(el);
 
-    el.addEventListener('htmx:afterRequest', function(){afterReq()});
+    let url = new URL(window.location.href);
+    url.searchParams.set("p", s)
+    window.history.replaceState({}, '', url);
+
+    el.addEventListener('htmx:afterRequest', pages[s]);
 
     htmx.process(el)
 }
@@ -33,7 +51,11 @@ function toggleApp(){
 }
 
 window.addEventListener('load', function() {
-    loadPage("about")
-    if(mobile)
-        notify("#optimizing for mobile\n(todo: an actual check)", 5000)
+    if(params.has("bg")){
+        toggle()
+        toggleApp()
+        return
+    }
+    
+    loadPage(params.get("p"))
 });

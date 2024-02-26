@@ -14,7 +14,7 @@ async function fetchUserRepositories(username) {
       const data = await response.json();
       return data;
     } catch (error) {
-      notify("#"+error, 5000);
+      notify("#error\n"+error.message, 5000);
       return null;
     }
 }
@@ -28,7 +28,7 @@ async function fetchOriginalRepo(username, repo) {
       const data = await response.json();
       return data;
     } catch (error) {
-      notify("#"+error, 5000);
+      notify("#error\n"+error.message, 5000);
       return null;
     }
 }

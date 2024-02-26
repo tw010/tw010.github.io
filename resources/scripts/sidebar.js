@@ -6,6 +6,7 @@ let id = null;
 
 function toggle() {
   const bar = document.getElementById("sidebar");
+  const app = document.getElementById("app")
   const buttons = bar.children;
   v = !v;
 
@@ -15,9 +16,12 @@ function toggle() {
     bar.style.height="100%";
     bar.style.visibility="visible"
     bar.style.overflow="scroll"
-    document.getElementById("app").style.marginTop=""
-    document.getElementById("app").style.position="relative"
-    document.getElementById("app").style.left="0"
+
+    app.style.marginTop=""
+    app.style.position="relative"
+    app.style.left="0"
+    app.style.borderRadius="1rem"
+
     an = 0;
     id = window.setInterval(function () {
       if(an<buttons.length){
@@ -38,9 +42,12 @@ function toggle() {
         bar.style.height="0"
         bar.style.visibility="hidden"
         bar.style.overflow="visible"
-        document.getElementById("app").style.left="-3rem"
-        document.getElementById("app").style.marginTop="6em"
-        document.getElementById("app").style.position="fixed"
+
+        app.style.left="-3rem"
+        app.style.marginTop="6em"
+        app.style.position="fixed"
+        app.style.borderRadius="0rem"
+        
         window.clearInterval(id);
       }
     }, trans);
