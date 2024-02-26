@@ -50,12 +50,16 @@ function toggleApp(){
     }
 }
 
-window.addEventListener('load', function() {
+//i guess this is called when the dom is loaded and the htmx requests not yet in chromium
+//and after everything loaded in firefox
+//todo: i guess an htmx:afterRequest on every base element, or just move all of them into index (optimal solution, but its gonna be a mess)
+window.addEventListener('load', () => {
+    loadPage(params.get("p"))
+
     if(params.has("bg")){
-        toggle()
+        if(!mobile)
+            toggle()
         toggleApp()
         return
     }
-    
-    loadPage(params.get("p"))
 });
