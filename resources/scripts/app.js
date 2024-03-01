@@ -59,6 +59,7 @@ window.onload = function() {
     }
     const wfl = setInterval(()=>{
         if(n!=0) return
+        clearTimeout(wfl)
         
         loadPage(params.get("p"))
 
@@ -68,6 +69,5 @@ window.onload = function() {
             toggleApp()
             return
         }
-        clearTimeout(wfl)
     }, 100)
 };
