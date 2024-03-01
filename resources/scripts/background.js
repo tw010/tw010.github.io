@@ -2,7 +2,7 @@ const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 
 const maxamount = mobile ? 0 : 256
 const nodedistance = 128
-const golSize = 10
+const golSize = mobile ? 8 : 10
 const ftime = mobile ? 128 : 32
 
 let nodes = []
@@ -49,7 +49,7 @@ function drawbg(){
     let col = 30
     ctx.fillRect(0,0,canvas.width,canvas.height)
     while(offset>0){
-        offset-=Math.random()*100
+        offset-=80+Math.random()*20
         col=offset/400*30
         ctx.fillStyle = `rgb(${col}, ${col}, ${col})`
         ctx.fillRect(canvas.width/2-offset,canvas.height/2-offset,offset*2,offset*2)

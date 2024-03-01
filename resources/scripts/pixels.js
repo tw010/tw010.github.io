@@ -35,7 +35,7 @@ function pixel3x3(x, y){
         for(let j = -1; j<2; j++){
             let p = createPixel(x+(i*size),y+(j*size))
             container.appendChild(p)
-            let time = (Math.random()+5)*100
+            let time = 300-Math.random()*100
             setTimeout(function(){
                 p.style.opacity = 0
                 setTimeout(function(){
@@ -47,13 +47,6 @@ function pixel3x3(x, y){
 }
 
 function createPixel(x, y){
-    let s = document.getElementsByClassName("pixel")
-    for(let i = 0; i<s.length; i++){
-        let p = s[i]
-        if(x+"px"==p.style.left&&y+"px"==p.style.top)
-            p.remove()
-    }
-
     let p = document.createElement("div")
     p.style.top=y+"px"
     p.style.left=x+"px"
@@ -64,7 +57,7 @@ function createPixel(x, y){
             p.style.backgroundColor = Math.random()<0.33 ? "rgb(30,30,30)" : Math.random()<0.67 ? "rgb(0,225,225)" : "rgb(204, 15, 211)"
         break
         case 2: 
-            p.style.backgroundColor = "rgb("+Math.random()*256+","+Math.random()*256+","+Math.random()*256+")"
+            p.style.backgroundColor = "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")"
         break
         case 3: 
             p.style.backgroundColor = Math.random()<0.5 ? "rgb(0,225,225)" : "rgb(204, 15, 211)"

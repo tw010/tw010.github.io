@@ -5,6 +5,8 @@
         overflow: scroll;
     }
     #github > .entry {
+        overflow: hidden;
+        position: relative;
         background-color: #1a1a1a;
         display: flex;
         margin: 1rem;
@@ -33,6 +35,8 @@
         display: flex;
         place-items: center;
         text-decoration: none;
+        display: inline;
+        margin-right: 0.5rem;
     }
     #github > .entry > .stats {
         display: flex;
@@ -43,6 +47,14 @@
     #github > .entry > .stats > div {
         display: flex;
         place-items: center;
+    }
+    #github > .entry > .langs {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--fg-col);
     }
 </style>
 <div id="github">

@@ -3,6 +3,7 @@ const pages = {
     "console": null,
     "about": null,
     "github": createRepoList,
+    "graph": graphinit
 }
 
 function loadPage(s) {
@@ -50,16 +51,23 @@ function toggleApp(){
     }
 }
 
-//i guess this is called when the dom is loaded and the htmx requests not yet in chromium
-//and after everything loaded in firefox
-//todo: i guess an htmx:afterRequest on every base element, or just move all of them into index (optimal solution, but its gonna be a mess)
-window.addEventListener('load', () => {
-    loadPage(params.get("p"))
-
-    if(params.has("bg")){
-        if(!mobile)
-            toggle()
-        toggleApp()
-        return
+window.onload = function() {
+    const bhx = document.body.querySelectorAll("div[hx-get]")
+    let n = bhx.length
+    for(let i = 0; i<bhx.length; i++) {
+        bhx[i].addEventListener("htmx:afterRequest", ()=>{n--})
     }
-});
+    const wfl = setInterval(()=>{
+        if(n!=0) return
+        
+        loadPage(params.get("p"))
+
+        if(params.has("bg")){
+            if(!mobile)
+                toggle()
+            toggleApp()
+            return
+        }
+        clearTimeout(wfl)
+    }, 100)
+};

@@ -15,7 +15,7 @@ function toggle() {
     bar.style.opacity="1"
     bar.style.height="100%";
     bar.style.visibility="visible"
-    bar.style.overflow="scroll"
+    bar.style.overflowY="scroll"
 
     app.style.marginTop=""
     app.style.position="relative"

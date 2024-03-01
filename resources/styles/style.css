@@ -2,6 +2,7 @@
     --bg-col: #202020;
     --acc-col: #40E0D0;
     --fg-col: #FFFFFF;
+    color-scheme: dark;
 }
 
 @font-face {
