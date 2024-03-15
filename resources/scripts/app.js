@@ -1,9 +1,9 @@
 const params = new URLSearchParams(document.location.search);
 const pages = {
-    "console": null,
     "about": null,
+    "console": null,
     "github": createRepoList,
-    "graph": graphinit
+    "graphs": graphinit,
 }
 
 function loadPage(s) {
